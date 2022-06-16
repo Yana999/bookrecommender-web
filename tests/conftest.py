@@ -11,7 +11,7 @@ from app.main import app
 
 @pytest.fixture(scope="module")
 def test_data() -> pd.DataFrame:
-    return load_dataset(file_name=config.app_config.test_data_file)
+    return '16 Lighthouse Road'
 
 
 @pytest.fixture()
