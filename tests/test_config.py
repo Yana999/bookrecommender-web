@@ -1,10 +1,9 @@
-from typing import Generator
-
 import pandas as pd
 import pytest
-from fastapi.testclient import TestClient
 from bookRecommender.config.core import config
 from bookRecommender.processing.data_manager import load_dataset
+from fastapi.testclient import TestClient
+from typing import Generator
 
 from app.main import app
 

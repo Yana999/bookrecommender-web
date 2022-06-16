@@ -1,14 +1,13 @@
 import logging
 import sys
+from loguru import logger
+from pydantic import AnyHttpUrl, BaseSettings
 from types import FrameType
 from typing import List, cast
 
-from loguru import logger
-from pydantic import AnyHttpUrl, BaseSettings
-
 
 class LoggingSettings(BaseSettings):
-    LOGGING_LEVEL: int = logging.INFO  # logging levels are type int
+    LOGGING_LEVEL: int = logging.INFO  # Logging levels are type int
 
 
 class Settings(BaseSettings):
@@ -32,7 +31,7 @@ class Settings(BaseSettings):
         case_sensitive = True
 
 
-# See: https://loguru.readthedocs.io/en/stable/overview.html#entirely-compatible-with-standard-logging  # noqa
+# See: https://loguru.readthedocs.io/en/stable/overview.html#entirely-compatible-with-standard-logging
 class InterceptHandler(logging.Handler):
     def emit(self, record: logging.LogRecord) -> None:  # pragma: no cover
         # Get corresponding Loguru level if it exists
@@ -43,7 +42,7 @@ class InterceptHandler(logging.Handler):
 
         # Find caller from where originated the logged message
         frame, depth = logging.currentframe(), 2
-        while frame.f_code.co_filename == logging.__file__:  # noqa: WPS609
+        while frame.f_code.co_filename == logging.__file__:
             frame = cast(FrameType, frame.f_back)
             depth += 1
 
@@ -55,12 +54,12 @@ class InterceptHandler(logging.Handler):
 
 def setup_app_logging(config: Settings) -> None:
     """Prepare custom logging for our application."""
-
     LOGGERS = ("uvicorn.asgi", "uvicorn.access")
     logging.getLogger().handlers = [InterceptHandler()]
     for logger_name in LOGGERS:
         logging_logger = logging.getLogger(logger_name)
-        logging_logger.handlers = [InterceptHandler(level=config.logging.LOGGING_LEVEL)]
+        logging_logger.handlers = [
+            InterceptHandler(level=config.logging.LOGGING_LEVEL)]
 
     logger.configure(
         handlers=[{"sink": sys.stderr, "level": config.logging.LOGGING_LEVEL}]
