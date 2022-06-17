@@ -5,4 +5,4 @@ python-multipart>=0.0.5,<0.1.0
 # We will explain this in the course
 book-recommender==0.0.1
 typing_extensions>=3.7.4,<3.8.0
-uvicorn>=0.11.3,<0.12.0
+uvicorn>=0.11.3
