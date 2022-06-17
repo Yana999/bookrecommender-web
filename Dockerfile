@@ -1,19 +1,19 @@
-FROM python:3.9.4
+FROM python:3.10
 
 # Create the user that will run the app
 RUN adduser --disabled-password --gecos '' ml-api-user
 
-WORKDIR /opt/titanic_webapp
+WORKDIR /opt/bookrecwebapp
 
-ARG PIP_EXTRA_INDEX_URL
+ENV PORT=8001
 
 # Install requirements
-ADD ./ /opt/titanic_webapp
-RUN pip install --upgrade pip
-RUN pip install -r /opt/titanic_webapp/requirements.txt
+ADD ./ /opt/bookrecwebapp
+RUN pip install --upgrade pip &\
+    pip install -r /opt/bookrecwebapp/requirements.txt
 
-RUN chmod +x /opt/titanic_webapp/run.sh
-RUN chown -R ml-api-user:ml-api-user ./
+RUN chmod +x /opt/bookrecwebapp/run.sh &\
+    chown -R ml-api-user:ml-api-user ./
 
 USER ml-api-user
 
