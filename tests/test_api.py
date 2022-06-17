@@ -4,7 +4,7 @@ from fastapi.testclient import TestClient
 def test_make_prediction(client: TestClient, test_data: str) -> None:
     # Given
     payload = {
-        # ensure pydantic plays well with np.nan
+        # Ensure pydantic plays well with np.nan
         "input": test_data
     }
 
