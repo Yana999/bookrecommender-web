@@ -13,8 +13,4 @@ class BookRecommenderInput(BaseModel):
     input: str
 
     class Config:
-        schema_extra = {
-            "example": {
-                "input": '16 Lighthouse Road'
-            }
-        }
+        schema_extra = {"example": {"input": "16 Lighthouse Road"}}
