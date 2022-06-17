@@ -1,10 +1,5 @@
-import numpy as np
-import pandas as pd
 from fastapi.testclient import TestClient
 
-import random
-
-import json
 
 def test_make_prediction(client: TestClient, test_data: str) -> None:
     # Given

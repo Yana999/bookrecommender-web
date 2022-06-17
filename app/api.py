@@ -1,12 +1,8 @@
-import json
 from typing import Any
 
-import numpy as np
-import pandas as pd
 from bookRecommender import __version__ as model_version
 from bookRecommender.predict import make_prediction
-from fastapi import APIRouter, HTTPException
-from fastapi.encoders import jsonable_encoder
+from fastapi import APIRouter
 from loguru import logger
 
 from app import __version__, schemas
@@ -27,7 +23,7 @@ def health() -> dict:
     return status.dict()
 
 
-@api_router.post("/predict", response_model=[], status_code=200)
+@api_router.post("/predict", response_model=list[str], status_code=200)
 async def predict(input_data: schemas.BookRecommenderInput) -> Any:
     """
     Make predictions on the survival probability of the Titanic passengers
