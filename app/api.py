@@ -26,19 +26,13 @@ def health() -> dict:
 @api_router.post("/predict", response_model=list[str], status_code=200)
 async def predict(input_data: schemas.BookRecommenderInput) -> Any:
     """
-    Make predictions on the survival probability of the Titanic passengers
+    Find book recommendations.
     """
 
     # Advanced: You can improve performance of your API by rewriting the
     # `make prediction` function to be async and using await here.
     logger.info(f"Making prediction on inputs: {input_data.input}")
-
     results = make_prediction(input_data=input_data.input)
-
-    # if results["errors"] is not None:
-    #     logger.warning(f"Prediction validation error: {results.get('errors')}")
-    #     raise HTTPException(status_code=400, detail=json.loads(results["errors"]))
-
     logger.info(f"Prediction result class: {results}")
 
     return results
