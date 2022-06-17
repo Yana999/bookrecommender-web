@@ -43,4 +43,3 @@ jobs:
           heroku_app_name: bookrecwebapp
           heroku_email: ${{secrets.HEROKU_EMAIL}}
           usedocker: true
-          docker_build_args: ${{secrets.PIP_EXTRA_INDEX_URL}}

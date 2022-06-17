@@ -9,11 +9,11 @@ ENV PORT=8001
 
 # Install requirements
 ADD ./ /opt/bookrecwebapp
-RUN pip install --upgrade pip &\
-    pip install -r /opt/bookrecwebapp/requirements.txt
+RUN pip install --upgrade pip
+RUN pip install -r /opt/bookrecwebapp/requirements.txt
 
-RUN chmod +x /opt/bookrecwebapp/run.sh &\
-    chown -R ml-api-user:ml-api-user ./
+RUN chmod +x /opt/bookrecwebapp/run.sh
+RUN chown -R ml-api-user:ml-api-user ./
 
 USER ml-api-user
 
