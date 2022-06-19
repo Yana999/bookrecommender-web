@@ -24,7 +24,7 @@ class Settings(BaseSettings):
         "http://localhost:8000",  # type: ignore
         "https://localhost:3000",  # type: ignore
         "https://localhost:8000",  # type: ignore
-        "https://bookrecwebapp.herokuapp.com"
+        "https://bookrecwebapp.herokuapp.com/"
     ]
 
     PROJECT_NAME: str = "Book recommender model API"
