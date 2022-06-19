@@ -27,10 +27,6 @@ class Settings(BaseSettings):
         "https://bookrecwebapp.herokuapp.com"
     ]
 
-    ALLOW_ORIGINS: List[AnyHttpUrl] = [
-        "https://bookrecwebapp.herokuapp.com"
-    ]
-
     PROJECT_NAME: str = "Book recommender model API"
 
     class Config:
