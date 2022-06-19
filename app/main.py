@@ -24,7 +24,7 @@ root_router = APIRouter()
 @root_router.get("/")
 def index(request: Request) -> Any:
     """Basic HTML response."""
-    body = (hp.home_page_code)
+    body = hp.body
 
     return HTMLResponse(content=body)
 
