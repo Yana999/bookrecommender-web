@@ -4,7 +4,7 @@ from types import FrameType
 from typing import List, cast
 
 from loguru import logger
-from pydantic import AnyHttpUrl, BaseSettings
+from pydantic import AnyHttpUrl, BaseSettings, tools
 
 
 class LoggingSettings(BaseSettings):
@@ -24,6 +24,11 @@ class Settings(BaseSettings):
         "http://localhost:8000",  # type: ignore
         "https://localhost:3000",  # type: ignore
         "https://localhost:8000",  # type: ignore
+        tools.parse_obj_as(AnyHttpUrl, "https://bookrecwebapp.herokuapp.com")
+    ]
+
+    ALLOW_ORIGINS: List[AnyHttpUrl] = [
+        tools.parse_obj_as(AnyHttpUrl, "https://bookrecwebapp.herokuapp.com")
     ]
 
     PROJECT_NAME: str = "Book recommender model API"

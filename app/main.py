@@ -8,6 +8,8 @@ from loguru import logger
 from app.api import api_router
 from app.config import settings, setup_app_logging
 
+import app.home_page as hp
+
 # Setup logging as early as possible
 setup_app_logging(config=settings)
 
@@ -22,17 +24,7 @@ root_router = APIRouter()
 @root_router.get("/")
 def index(request: Request) -> Any:
     """Basic HTML response."""
-    body = (
-        "<html>"
-        "<body style='padding: 10px;'>"
-        "<h1>Welcome to the Book recommender model API</h1>"
-        "<div>"
-        "Check the docs: <a href='/docs'>here</a>"
-        "</div>"
-        "</body>"
-        "</html>"
-    )
-
+    body = hp.body
     return HTMLResponse(content=body)
 
 
