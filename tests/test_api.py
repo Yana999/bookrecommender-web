@@ -10,7 +10,7 @@ def test_make_prediction(client: TestClient, test_data: str) -> None:
 
     # When
     response = client.post(
-        "http://localhost:8001/api/v1/predict",
+        "http://localhost:8001/api/v1/predict-by-name",
         json=payload,
     )
 
