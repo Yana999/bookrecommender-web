@@ -6,6 +6,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>BookRec</title>
   <link rel="icon" type="image/x-icon" href="/static/icons-book-100.ico">
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/uikit@3.14.3/dist/css/uikit.min.css"/>
+  <script src="https://cdn.jsdelivr.net/npm/uikit@3.14.3/dist/js/uikit.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/uikit@3.14.3/dist/js/uikit-icons.min.js"></script>
 </head>
 
 <body style="display: flex; justify-content:
@@ -20,13 +24,13 @@ left: 0; top: 0; right: 0; bottom: 0; background-color: #d0cced">
 	flex-direction: column; width: 50%; row-gap: 10px">
     <label for="bookNameField">On which book should rely our recommendation?
 	</label>
-    <input type="text" id="bookNameField" class="bookNameField"
+    <input type="text" id="bookNameField" class="bookNameField uk-input"
 	placeholder="Book title" value="16 Lighthouse Road" />
-    <button class="searchButton" type="submit">Search!</button>
+    <button class="uk-button searchButton" type="submit">Search!</button>
   </form>
-  <p class="result"></p>
+  <p class="result" style="margin: 0 auto 20px"></p>
   </br>
-  <div>
+  <div style="position: fixed; bottom: 0;">
   Check the docs: <a href='/docs'>here</a>
   </div>
 
