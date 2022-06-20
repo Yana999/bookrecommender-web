@@ -38,7 +38,7 @@ async def predict(input_data: schemas.BookRecommenderInput) -> Any:
     return results
 
 @api_router.post("/predict-by-name", response_model=list[str], status_code=200)
-async def predict(input_data: schemas.BookRecommenderInput) -> Any:
+async def predict_by_name(input_data: schemas.BookRecommenderInput) -> Any:
     """
     Find book recommendations.
     """
