@@ -33,7 +33,7 @@ body = (
     "        input: requestText.value\n"
     "      };\n"
     "      return await fetch(\n"
-    "	  \"https://bookrecwebapp.herokuapp.com/api/v1/predict\",\n"
+    "	  \"https://bookrecwebapp.herokuapp.com/api/v1/predict-by-name\",\n"
     "	  {\n"
     "        method: \"POST\",\n"
     "        headers: {\n"
