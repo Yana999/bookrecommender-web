@@ -2,30 +2,29 @@ from typing import Any
 
 from fastapi import APIRouter, FastAPI, Request
 from fastapi.middleware.cors import CORSMiddleware
-from fastapi.responses import HTMLResponse
+from fastapi.responses import HTMLResponse, FileResponse
+from fastapi.staticfiles import StaticFiles
+
 from loguru import logger
 
 from app.api import api_router
 from app.config import settings, setup_app_logging
 
-import app.home_page as hp
 
 # Setup logging as early as possible
 setup_app_logging(config=settings)
 
-
 app = FastAPI(
     title=settings.PROJECT_NAME, openapi_url=f"{settings.API_V1_STR}/openapi.json"
 )
-
+app.mount("/static", StaticFiles(directory="static"), name="static")
 root_router = APIRouter()
 
 
 @root_router.get("/")
 def index(request: Request) -> Any:
     """Basic HTML response."""
-    body = hp.body
-    return HTMLResponse(content=body)
+    return FileResponse('static/index.html')
 
 
 app.include_router(api_router, prefix=settings.API_V1_STR)
