@@ -28,7 +28,7 @@ left: 0; top: 0; right: 0; bottom: 0; background-color: #d0cced">
 	placeholder="Book title" value="16 Lighthouse Road" />
     <button class="uk-button searchButton" type="submit">Search!</button>
   </form>
-  <p class="result" style="margin: 0 auto 20px"></p>
+  <p class="result" style="text-align: left"></p>
   </br>
   <div style="position: fixed; bottom: 0;">
   Check the docs: <a href='/docs'>here</a>
@@ -40,7 +40,7 @@ left: 0; top: 0; right: 0; bottom: 0; background-color: #d0cced">
         input: requestText.value
       };
       return await fetch(
-	  "https://bookrecwebapp.herokuapp.com/api/v1/predict", 
+	  "https://bookrecwebapp.herokuapp.com/api/v1/predict-by-name",
 	  {
         method: 'POST',
         headers: {
@@ -57,7 +57,7 @@ left: 0; top: 0; right: 0; bottom: 0; background-color: #d0cced">
 
 	document.querySelector(".book-sent-form").onsubmit = () => false;
     document.querySelector('.book-sent-form').addEventListener(
-	'submit', 
+	'submit',
 	event => event.preventDefault());
     submitRequestButton.addEventListener('submit', event => {
       event.preventDefault();
@@ -67,14 +67,9 @@ left: 0; top: 0; right: 0; bottom: 0; background-color: #d0cced">
         .then(response => {
 		  console.log(response);
           resultText.innerText = '';
-		  if (response.length == 1) {
-		    resultText.innerText = response[0]
-		  }
-		  else {
-            for (let i = 1; i < response.length; ++i) {
-              resultText.innerText += response[i] + '\n';
-            }
-		  }
+          for (let i = 0; i < response.length; ++i) {
+            resultText.innerText += response[i];
+          }
         });
     })
   </script>
